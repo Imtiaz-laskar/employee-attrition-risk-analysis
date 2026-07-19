@@ -249,7 +249,7 @@ Compared with overtime, compensation, tenure, and satisfaction, commute distance
 
 ---
 
-# Strategic Recommendations
+# Recommendations
 
 Based on the analysis, five priority actions emerge:
 
