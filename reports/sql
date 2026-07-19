@@ -1,0 +1,139 @@
+dataset_overview.sql
+
+SELECT
+  COUNT(*) AS total_employees,
+  COUNT(DISTINCT Department) AS departments,
+  COUNT(DISTINCT JobRole) AS job_roles,
+  SUM(CASE WHEN Attrition = TRUE THEN 1 ELSE 0 END) AS attritions,
+  ROUND(
+    100 * SUM(CASE WHEN Attrition = TRUE THEN 1 ELSE 0 END) / COUNT(*),
+    2
+  ) AS overall_attrition_rate
+FROM
+  `employee-attrition-502903.Employee_Attrition.employee_attrition`;
+
+attrition_by_department.sql
+
+SELECT
+  Department,
+  COUNT(*) AS employees,
+  SUM(CASE WHEN Attrition = TRUE THEN 1 ELSE 0 END) AS attritions,
+  ROUND(
+    100 * SUM(CASE WHEN Attrition = TRUE THEN 1 ELSE 0 END) / COUNT(*),
+    2
+  ) AS attrition_rate
+FROM
+  `employee-attrition-502903.Employee_Attrition.employee_attrition`
+GROUP BY
+  Department
+ORDER BY
+  attrition_rate DESC;
+
+attrition_by_job_role.sql
+
+SELECT
+  JobRole,
+  COUNT(*) AS employees,
+  SUM(CASE WHEN Attrition = TRUE THEN 1 ELSE 0 END) AS attritions,
+  ROUND(
+    100 * SUM(CASE WHEN Attrition = TRUE THEN 1 ELSE 0 END) / COUNT(*),
+    2
+  ) AS attrition_rate
+FROM
+  `employee-attrition-502903.Employee_Attrition.employee_attrition`
+GROUP BY
+  JobRole
+ORDER BY
+  attrition_rate DESC;
+
+attrition_by_overtime.sql
+
+SELECT
+  OverTime,
+  COUNT(*) AS employees,
+  SUM(CASE WHEN Attrition = TRUE THEN 1 ELSE 0 END) AS attritions,
+  ROUND(
+    100 * SUM(CASE WHEN Attrition = TRUE THEN 1 ELSE 0 END) / COUNT(*),
+    2
+  ) AS attrition_rate
+FROM
+  `employee-attrition-502903.Employee_Attrition.employee_attrition`
+GROUP BY
+  OverTime
+ORDER BY
+  attrition_rate DESC;
+
+attrition_by_job_satisfaction.sql
+
+SELECT
+  JobSatisfaction,
+  COUNT(*) AS employees,
+  SUM(CASE WHEN Attrition = TRUE THEN 1 ELSE 0 END) AS attritions,
+  ROUND(
+    100 * SUM(CASE WHEN Attrition = TRUE THEN 1 ELSE 0 END) / COUNT(*),
+    2
+  ) AS attrition_rate
+FROM
+  `employee-attrition-502903.Employee_Attrition.employee_attrition`
+GROUP BY
+  JobSatisfaction
+ORDER BY
+  JobSatisfaction;
+
+role_overtime_attrition.sql
+
+SELECT
+  JobRole,
+  OverTime,
+  COUNT(*) AS employees,
+  SUM(CASE WHEN Attrition = TRUE THEN 1 ELSE 0 END) AS attritions,
+  ROUND(
+    100 * SUM(CASE WHEN Attrition = TRUE THEN 1 ELSE 0 END) / COUNT(*),
+    2
+  ) AS attrition_rate
+FROM
+  `employee-attrition-502903.Employee_Attrition.employee_attrition`
+GROUP BY
+  JobRole,
+  OverTime
+ORDER BY
+  attrition_rate DESC;
+
+compensation_analysis.sql
+
+SELECT
+  Attrition,
+  ROUND(AVG(MonthlyIncome), 2) AS avg_monthly_income,
+  MIN(MonthlyIncome) AS min_income,
+  MAX(MonthlyIncome) AS max_income
+FROM
+  `employee-attrition-502903.Employee_Attrition.employee_attrition`
+GROUP BY
+  Attrition;
+
+tenure_analysis.sql
+
+SELECT
+  Attrition,
+  ROUND(AVG(YearsAtCompany), 2) AS avg_years_at_company
+FROM
+  `employee-attrition-502903.Employee_Attrition.employee_attrition`
+GROUP BY
+  Attrition;
+
+distance_from_home_analysis.sql
+
+SELECT
+  DistanceFromHome,
+  COUNT(*) AS employees,
+  SUM(CASE WHEN Attrition = TRUE THEN 1 ELSE 0 END) AS attritions,
+  ROUND(
+    100 * SUM(CASE WHEN Attrition = TRUE THEN 1 ELSE 0 END) / COUNT(*),
+    2
+  ) AS attrition_rate
+FROM
+  `employee-attrition-502903.Employee_Attrition.employee_attrition`
+GROUP BY
+  DistanceFromHome
+ORDER BY
+  DistanceFromHome;
