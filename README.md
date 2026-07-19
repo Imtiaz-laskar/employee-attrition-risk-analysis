@@ -1,34 +1,37 @@
-# Employee Attrition Risk Analysis Using BigQuery SQL
-
-## Overview
-
-Employee attrition can significantly impact organizational performance through increased recruitment costs, productivity loss, knowledge transfer gaps, and employee disengagement. This project analyzes workforce attrition patterns using SQL in Google BigQuery to identify key factors associated with employee turnover and uncover high-risk employee segments.
-
-The analysis focuses on workforce demographics, job characteristics, compensation, tenure, satisfaction, and overtime patterns to understand where attrition risk is concentrated and provide data-driven retention recommendations.
+# Employee Attrition Risk Analysis
+### Identifying Workforce Retention Risks Using BigQuery SQL
 
 ---
 
-## Business Problem
+## Executive Summary
 
-Employee turnover is a critical workforce challenge that affects operational continuity and organizational performance.
+Employee attrition represents a significant workforce and operational challenge, affecting productivity, recruitment costs, institutional knowledge retention, and organizational continuity.
 
-This project seeks to answer:
+This project analyzes employee attrition patterns using SQL in Google BigQuery to identify the factors most strongly associated with workforce turnover. The analysis evaluates attrition across departments, job roles, overtime status, compensation, job satisfaction, and employee tenure to determine where retention risks are concentrated.
 
-> **What factors are most strongly associated with employee attrition, and which employee segments exhibit the highest turnover risk?**
+The findings indicate that attrition is not evenly distributed across the workforce. Instead, turnover is disproportionately concentrated among employees working overtime, specific job roles, lower-income segments, and employees with shorter organizational tenure.
 
-By identifying these patterns, organizations can develop targeted retention strategies and proactively address workforce risks.
+Among all factors analyzed, overtime emerged as the strongest predictor of attrition, while Sales Representatives working overtime represented the highest-risk employee segment.
 
 ---
 
-## Objectives
+## Business Question
 
-- Measure overall employee attrition.
-- Identify departments and job roles with elevated turnover.
+> Which workforce characteristics are most strongly associated with employee attrition, and where should retention efforts be prioritized to achieve the greatest impact?
+
+---
+
+## Project Objectives
+
+The analysis seeks to:
+
+- Quantify overall employee attrition.
+- Identify departments and job roles with elevated turnover risk.
 - Assess the relationship between overtime and attrition.
-- Evaluate the impact of compensation on employee retention.
-- Analyze the relationship between job satisfaction and attrition.
-- Examine employee tenure patterns among attrited employees.
-- Provide executive-level recommendations based on findings.
+- Evaluate compensation patterns among attrited employees.
+- Examine the relationship between job satisfaction and turnover.
+- Analyze tenure-related attrition trends.
+- Translate analytical findings into actionable business recommendations.
 
 ---
 
@@ -36,9 +39,9 @@ By identifying these patterns, organizations can develop targeted retention stra
 
 This project uses a publicly available Employee Attrition dataset sourced from Kaggle.
 
-The dataset contains employee demographic, compensation, job satisfaction, tenure, department, job role, and work-related attributes used to analyze workforce attrition patterns.
+The dataset contains employee demographic, compensation, job satisfaction, tenure, departmental, and work-related attributes commonly used in workforce analytics and retention studies.
 
-### Dataset Characteristics
+### Dataset Overview
 
 | Metric | Value |
 |----------|----------|
@@ -50,64 +53,44 @@ The dataset contains employee demographic, compensation, job satisfaction, tenur
 | Overall Attrition Rate | 16.12% |
 | Dataset Size | 421 KB |
 
-### Key Fields Analyzed
-
-- Attrition
-- Department
-- JobRole
-- OverTime
-- MonthlyIncome
-- JobSatisfaction
-- YearsAtCompany
-- DistanceFromHome
-- TotalWorkingYears
-
 ---
 
-## Tools & Technologies
+## Technology Stack
 
 | Category | Tool |
 |-----------|------|
-| Data Storage & Analysis | Google BigQuery |
+| Data Warehouse | Google BigQuery |
 | Query Language | SQL |
 | Documentation | GitHub |
-| AI-Assisted Analysis | Gemini in BigQuery |
+| AI Assistance | Gemini in BigQuery |
 | Version Control | Git |
 
 ---
 
-## Analytical Approach
+# Analytical Approach
 
-The analysis followed a structured workflow:
+The analysis followed a structured workforce analytics framework.
 
-### 1. Data Understanding
+### Phase 1: Data Exploration
 
-- Reviewed dataset structure and available attributes.
-- Validated record counts and workforce composition.
-- Identified variables relevant to attrition analysis.
+- Reviewed dataset structure and workforce composition.
+- Validated record counts and attribute coverage.
+- Identified variables relevant to retention analysis.
 
-### 2. Exploratory Data Analysis
-
-Analyzed:
-
-- Overall attrition rates
-- Department distribution
-- Job role distribution
-- Workforce composition
-
-### 3. Attrition Segmentation
+### Phase 2: Attrition Segmentation
 
 Measured attrition across:
 
 - Departments
-- Job roles
-- Overtime status
-- Job satisfaction levels
-- Employee tenure
+- Job Roles
+- Overtime Status
+- Job Satisfaction
+- Compensation
+- Employee Tenure
 
-### 4. Risk Identification
+### Phase 3: Risk Identification
 
-Investigated combinations of variables to identify high-risk employee segments.
+Evaluated combinations of variables to identify concentrated areas of turnover risk.
 
 Examples:
 
@@ -115,32 +98,34 @@ Examples:
 - Compensation + Attrition
 - Tenure + Attrition
 
-### 5. Insight Generation
+### Phase 4: Insight Development
 
-Translated SQL outputs into business findings and retention recommendations.
+Translated SQL outputs into executive-level findings and business implications.
 
 ---
 
 # Key Findings
 
-## 1. Overtime Emerged as the Strongest Attrition Driver
+---
+
+## Finding 1: Overtime Emerged as the Strongest Attrition Driver
 
 | Overtime Status | Employees | Attritions | Attrition Rate |
 |----------------|-----------:|-----------:|---------------:|
 | Yes | 416 | 127 | 30.53% |
-| No | 1054 | 110 | 10.44% |
+| No | 1,054 | 110 | 10.44% |
 
 ### Insight
 
-Employees working overtime experienced nearly three times the attrition rate of employees who did not work overtime.
+Employees working overtime experienced an attrition rate nearly three times higher than employees who did not work overtime.
 
 ### Business Implication
 
-Workload management and employee well-being initiatives may significantly improve retention outcomes.
+The magnitude of the difference suggests that workload intensity may be a significant contributor to employee turnover and should be a priority area for retention interventions.
 
 ---
 
-## 2. Attrition Risk is Concentrated in Specific Job Roles
+## Finding 2: Attrition Risk Is Concentrated Within Specific Job Roles
 
 | Job Role | Attrition Rate |
 |-----------|---------------:|
@@ -153,15 +138,15 @@ Workload management and employee well-being initiatives may significantly improv
 
 ### Insight
 
-Sales Representatives experienced the highest turnover risk, more than double the organizational average.
+Sales Representatives recorded the highest attrition rate (39.76%), more than double the organizational average of 16.12%, indicating a role-specific retention challenge.
 
 ### Business Implication
 
-Retention programs should prioritize high-risk operational and customer-facing roles.
+Retention initiatives should prioritize high-risk roles where turnover is most concentrated, enabling more targeted and efficient intervention strategies.
 
 ---
 
-## 3. Overtime Amplifies Role-Based Attrition Risk
+## Finding 3: Overtime Significantly Amplifies Role-Based Attrition Risk
 
 | Job Role | Overtime | Attrition Rate |
 |-----------|----------|---------------:|
@@ -173,15 +158,15 @@ Retention programs should prioritize high-risk operational and customer-facing r
 
 ### Insight
 
-The highest-risk employee segment consists of Sales Representatives working overtime, where attrition reached 66.67%.
+Employees occupying high-risk roles and simultaneously working overtime experienced substantially higher attrition rates than the workforce average.
 
 ### Business Implication
 
-Targeted workload interventions may be more effective than broad retention initiatives.
+Retention efforts may generate greater impact when focused on specific high-risk employee segments rather than broad workforce-wide initiatives.
 
 ---
 
-## 4. Lower Job Satisfaction is Associated with Higher Attrition
+## Finding 4: Lower Job Satisfaction Is Associated With Higher Attrition
 
 | Job Satisfaction | Attrition Rate |
 |-----------------|---------------:|
@@ -192,15 +177,15 @@ Targeted workload interventions may be more effective than broad retention initi
 
 ### Insight
 
-Attrition consistently declines as job satisfaction increases.
+Attrition declines consistently as job satisfaction improves, suggesting a meaningful relationship between employee experience and retention outcomes.
 
 ### Business Implication
 
-Employee engagement and workplace experience should be monitored as leading indicators of turnover risk.
+Employee engagement and satisfaction indicators may serve as useful leading indicators for workforce retention monitoring.
 
 ---
 
-## 5. Employees Who Leave Earn Less on Average
+## Finding 5: Employees Who Leave Earn Less on Average
 
 | Attrition Status | Average Monthly Income |
 |-----------------|-----------------------:|
@@ -209,15 +194,15 @@ Employee engagement and workplace experience should be monitored as leading indi
 
 ### Insight
 
-Employees who left earned approximately 30% less on average than employees who remained.
+Employees who left the organization earned approximately 30% less on average than employees who remained.
 
 ### Business Implication
 
-Compensation competitiveness may influence employee retention decisions.
+Compensation competitiveness may influence employee retention and warrants further review in high-turnover workforce segments.
 
 ---
 
-## 6. Employees Who Leave Tend to Have Shorter Tenure
+## Finding 6: Attrition Is Higher Among Employees With Shorter Tenure
 
 | Attrition Status | Average Years at Company |
 |-----------------|-------------------------:|
@@ -226,15 +211,15 @@ Compensation competitiveness may influence employee retention decisions.
 
 ### Insight
 
-Employees who leave tend to do so earlier in their organizational lifecycle.
+Employees who left the organization tended to do so earlier in their tenure compared to employees who remained.
 
 ### Business Implication
 
-The first five years of employment represent a critical retention period.
+The first five years of employment appear to represent a critical retention window and may benefit from targeted engagement and development programs.
 
 ---
 
-## 7. Sales Department Experiences the Highest Attrition
+## Finding 7: Sales Experiences the Highest Departmental Attrition
 
 | Department | Employees | Attrition Rate |
 |------------|----------:|---------------:|
@@ -244,60 +229,64 @@ The first five years of employment represent a critical retention period.
 
 ### Insight
 
-Sales demonstrates the highest turnover risk despite representing only 30% of the workforce.
+Sales recorded the highest attrition rate among all departments, exceeding both Human Resources and Research & Development.
 
 ### Business Implication
 
-Department-specific retention initiatives may deliver greater impact than organization-wide interventions.
+Department-level retention strategies may be more effective than organization-wide interventions where turnover risk is concentrated.
 
 ---
 
-## 8. Distance From Home Shows Limited Influence
-
-Analysis of commute distance did not reveal a consistent relationship with attrition.
+## Finding 8: Distance From Home Demonstrates Limited Influence
 
 ### Insight
 
-Workload, satisfaction, compensation, and role-specific factors appear more influential than commute distance.
+Analysis of commute distance did not reveal a consistent relationship with attrition.
+
+### Business Implication
+
+Compared with overtime, compensation, tenure, and satisfaction, commute distance appears to be a less significant predictor of employee turnover within this dataset.
 
 ---
 
-# Executive Recommendations
+# Strategic Recommendations
 
-## Priority 1: Reduce Excessive Overtime
+Based on the analysis, five priority actions emerge:
 
-- Monitor overtime trends across teams.
-- Improve workforce planning and resource allocation.
-- Encourage sustainable workload practices.
+### 1. Reduce Excessive Overtime
 
-## Priority 2: Focus Retention Efforts on High-Risk Roles
+- Monitor workload distribution.
+- Improve workforce planning.
+- Evaluate staffing capacity in high-risk functions.
 
-Prioritize:
+### 2. Prioritize High-Risk Roles
+
+Focus retention efforts on:
 
 - Sales Representatives
 - Sales Executives
 - Laboratory Technicians
 
-## Priority 3: Improve Employee Experience
+### 3. Strengthen Employee Experience
 
-- Monitor employee satisfaction metrics.
-- Strengthen feedback and engagement programs.
+- Monitor engagement indicators.
+- Improve feedback mechanisms.
 - Address recurring workplace concerns.
 
-## Priority 4: Review Compensation Structures
+### 4. Review Compensation Competitiveness
 
-- Evaluate compensation competitiveness.
-- Assess pay equity across high-turnover roles.
+- Benchmark compensation for high-turnover roles.
+- Evaluate potential pay-related retention risks.
 
-## Priority 5: Strengthen Early-Career Retention
+### 5. Focus on Early-Tenure Retention
 
 - Enhance onboarding programs.
-- Provide career development opportunities.
-- Improve manager support during early tenure.
+- Expand career development opportunities.
+- Improve manager support during the first five years.
 
 ---
 
-## Repository Structure
+# Repository Structure
 
 ```text
 employee-attrition-risk-analysis/
@@ -325,31 +314,31 @@ employee-attrition-risk-analysis/
 
 ---
 
-## Skills Demonstrated
+# Skills Demonstrated
 
-### SQL & Analytics
-
-- SQL Querying
-- Data Exploration
-- Aggregations & Grouping
-- Workforce Analytics
-- Segmentation Analysis
-- Business Intelligence
-
-### Data Analysis
+### Data Analytics
 
 - Exploratory Data Analysis (EDA)
+- Workforce Analytics
+- Segmentation Analysis
 - Trend Identification
 - Risk Assessment
-- Root Cause Analysis
-- Insight Generation
 
-### Business & Communication
+### SQL
+
+- Data Aggregation
+- Grouping & Filtering
+- Conditional Logic
+- Workforce KPI Analysis
+- Business Reporting
+
+### Business & Strategy
 
 - Executive Reporting
 - Data Storytelling
-- Strategic Recommendations
+- Insight Generation
 - Decision Support
+- Strategic Recommendations
 
 ### Tools
 
@@ -360,37 +349,31 @@ employee-attrition-risk-analysis/
 
 ---
 
-## Methodology & AI Usage Disclosure
+# AI Usage Disclosure
 
-### Analysis Environment
-
-- Google BigQuery
-- SQL
-- GitHub
-
-### AI-Assisted Workflow
-
-Gemini in BigQuery was used to assist with:
+Gemini in BigQuery was used to support:
 
 - SQL query generation
 - Exploratory analysis
 - Pattern identification
 - Insight discovery
 
-All queries, findings, interpretations, and recommendations were reviewed, validated, and refined through manual analysis.
+All findings, interpretations, recommendations, and conclusions were reviewed, validated, and refined through manual analysis.
 
 ---
 
-## Disclaimer
+# Disclaimer
 
 This project was conducted for educational and portfolio purposes using a publicly available dataset from Kaggle.
 
-The analysis does not represent any real organization and is intended to demonstrate SQL, data analysis, business intelligence, and executive reporting skills.
+The analysis does not represent any real organization and is intended solely to demonstrate SQL, analytics, business intelligence, and executive reporting capabilities.
 
 ---
 
-## Conclusion
+# Conclusion
 
-This analysis identified overtime, job role, compensation, tenure, and job satisfaction as the strongest factors associated with employee attrition.
+The analysis indicates that attrition is primarily associated with workload intensity, role-specific dynamics, compensation levels, employee satisfaction, and tenure.
 
-The findings suggest that attrition risk is concentrated within specific employee segments rather than uniformly distributed across the workforce. By focusing on workload management, employee experience, compensation competitiveness, and targeted retention strategies, organizations can proactively address turnover risk and improve workforce stability.
+Rather than being uniformly distributed across the workforce, turnover is concentrated within identifiable employee segments, particularly those working overtime and occupying high-risk operational roles.
+
+These findings suggest that targeted retention interventions focused on workload management, employee experience, compensation competitiveness, and early-career engagement may deliver greater impact than broad workforce-wide initiatives.
