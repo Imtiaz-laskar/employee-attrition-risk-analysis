@@ -10,7 +10,7 @@ A workforce analytics case study demonstrating how SQL can be used to identify e
 
 Start with the executive presentation for a concise overview of the project, including the business problem, analytical approach, key findings, business implications, and strategic recommendations.
 
-**Presentation:** `deck-attrition-executive.pdf`
+**Presentation:** `deck-attrition-executive.pdf` | https://drive.google.com/file/d/1_quQRLG63PZCVkpWahGYMInt742G6SAn/view?usp=drive_link
 
 ---
 
