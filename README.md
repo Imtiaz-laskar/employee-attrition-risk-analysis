@@ -1,151 +1,242 @@
-# Employee Attrition Risk Analysis
+<div align="center">
 
-### Identifying Workforce Retention Risks Using Google BigQuery SQL
+<br/>
 
-A workforce analytics case study demonstrating how SQL can be used to identify employee attrition patterns and support data-driven retention strategies.
+```
+ █████╗ ████████╗████████╗██████╗ ██╗████████╗██╗ ██████╗ ███╗   ██╗
+██╔══██╗╚══██╔══╝╚══██╔══╝██╔══██╗██║╚══██╔══╝██║██╔═══██╗████╗  ██║
+███████║   ██║      ██║   ██████╔╝██║   ██║   ██║██║   ██║██╔██╗ ██║
+██╔══██║   ██║      ██║   ██╔══██╗██║   ██║   ██║██║   ██║██║╚██╗██║
+██║  ██║   ██║      ██║   ██║  ██║██║   ██║   ██║╚██████╔╝██║ ╚████║
+╚═╝  ╚═╝   ╚═╝      ╚═╝   ╚═╝  ╚═╝╚═╝   ╚═╝   ╚═╝ ╚═════╝ ╚═╝  ╚═══╝
+
+         ──── EMPLOYEE ATTRITION RISK ANALYSIS ────
+     Workforce Intelligence · Google BigQuery SQL · Retention Strategy
+```
+
+<br/>
+
+[![Platform](https://img.shields.io/badge/Platform-Google%20BigQuery-4285F4?style=for-the-badge&logo=google-cloud&logoColor=white)](#)
+[![Language](https://img.shields.io/badge/Language-SQL-e67e00?style=for-the-badge&logo=postgresql&logoColor=white)](#)
+[![Attrition Rate](https://img.shields.io/badge/Attrition%20Rate-16.12%25-c0392b?style=for-the-badge&logo=chartdotjs&logoColor=white)](#)
+[![Top Risk Factor](https://img.shields.io/badge/Top%20Risk-Overtime%2030.53%25-1a7f37?style=for-the-badge&logo=clockify&logoColor=white)](#)
+
+<br/>
+
+> A workforce analytics case study demonstrating how **Google BigQuery SQL** can identify employee attrition patterns, quantify retention risk, and surface actionable recommendations for workforce planning.
+
+<br/>
+
+📄 **Executive Deck** → [`deck-attrition-executive.pdf`](https://github.com/Imtiaz-laskar/employee-attrition-risk-analysis/blob/main/deck-attrition-executive.pdf)
+
+<br/>
 
 ---
 
-## 📄 Executive Presentation
+</div>
 
-Start with the executive presentation for a concise overview of the project, including the business problem, analytical approach, key findings, business implications, and strategic recommendations.
+## 📊 Executive Snapshot
 
-**Presentation:** `deck-attrition-executive.pdf` |(https://github.com/Imtiaz-laskar/employee-attrition-risk-analysis/blob/main/deck-attrition-executive.pdf)
-
----
-
-## Project Overview
-
-Employee attrition impacts productivity, hiring costs, and organizational continuity. This project uses **Google BigQuery SQL** to analyze workforce data and identify the factors most strongly associated with employee turnover.
-
-The analysis examines departments, job roles, overtime, compensation, job satisfaction, and tenure to generate actionable business insights.
-
----
-
-## Executive Snapshot
+<div align="center">
 
 | Metric | Value |
-|---------|------:|
-| Total Employees | **1,470** |
-| Attrition Rate | **16.12%** |
-| Attrition Cases | **237** |
-| Departments | **3** |
-| Job Roles | **9** |
-| Highest-Risk Role | **Sales Representative (39.76%)** |
-| Strongest Risk Factor | **Overtime (30.53%)** |
+|:---:|:---:|
+| 👥 **Total Employees Analysed** | **1,470** |
+| 📉 **Overall Attrition Rate** | **16.12%** |
+| 🚨 **Total Attrition Cases** | **237** |
+| 🏢 **Departments Covered** | **3** |
+| 💼 **Job Roles Examined** | **9** |
+| 🔴 **Highest-Risk Role** | **Sales Representative — 39.76%** |
+| ⚡ **Strongest Risk Factor** | **Overtime — 30.53% vs. 10.44% baseline** |
+
+</div>
 
 ---
 
-## Business Question
+## ❓ Business Question
 
-> **Which workforce characteristics are most strongly associated with employee attrition, and where should retention efforts be prioritized?**
+<div align="center">
 
----
+> *"Which workforce characteristics are most strongly associated with employee attrition, and where should retention efforts be prioritized?"*
 
-## Technology Stack
-
-- **Data Warehouse:** Google BigQuery
-- **Query Language:** SQL
-- **Documentation:** GitHub
-- **Version Control:** Git
-- **AI Assistance:** Gemini in BigQuery
+</div>
 
 ---
 
-## Analytical Approach
+## 🔍 Analytical Approach
 
-The analysis followed four stages:
+```
+┌────────────────────────────────────────────────────────────────────┐
+│                    4-STAGE ANALYSIS PIPELINE                       │
+├──────────────┬──────────────────┬───────────────┬──────────────────┤
+│   STAGE 1    │    STAGE 2       │   STAGE 3     │    STAGE 4       │
+│              │                  │               │                  │
+│    Data      │   Workforce      │     Risk      │    Business      │
+│ Exploration  │  Segmentation    │Identification │    Insights      │
+│     &        │                  │               │   Generation     │
+│  Validation  │                  │               │                  │
+└──────────────┴──────────────────┴───────────────┴──────────────────┘
+```
 
-1. Data exploration and validation
-2. Workforce segmentation
-3. Risk identification
-4. Business insight generation
+**Key dimensions analysed across all stages:**
 
-Key dimensions analyzed:
-
-- Departments
-- Job Roles
-- Overtime
-- Compensation
-- Job Satisfaction
-- Employee Tenure
-
----
-
-## Key Findings
-
-- **Overtime** showed the strongest association with attrition (30.53% vs. 10.44%).
-- **Sales Representatives** experienced the highest attrition rate (39.76%).
-- **Sales Representatives working overtime** recorded the highest turnover (66.67%).
-- Lower compensation, lower job satisfaction, and shorter tenure were associated with higher attrition.
-- The **Sales Department** reported the highest departmental attrition (20.63%).
+| Dimension | Focus |
+|:---|:---|
+| 🏢 Departments | Comparative attrition rates across organisational units |
+| 💼 Job Roles | Role-level risk stratification across 9 functions |
+| ⏱️ Overtime | Correlation between excess hours and turnover probability |
+| 💰 Compensation | Pay band impact on attrition likelihood |
+| 😊 Job Satisfaction | Sentiment-attrition relationship mapping |
+| 📅 Employee Tenure | Early-tenure vs. long-tenure risk profiling |
 
 ---
 
-## Strategic Recommendations
+## 🔑 Key Findings
 
-- Reduce excessive overtime.
-- Prioritize high-risk job roles.
-- Improve employee experience.
-- Review compensation competitiveness.
-- Strengthen early-tenure retention.
-
----
-
-## Repository Structure
-
-```text
-employee-attrition-risk-analysis/
-│
-├── README.md
-├── deck-attrition-executive.pdf
-├── reports/
-│   ├── executive_summary.md
-│   ├── sql/
-│   ├── evidence/
-│   └── docs/
-└── LICENSE
+```
+┌─────────────────────────────────────────────────────────────────────┐
+│                         CRITICAL RISK SIGNALS                       │
+├─────────────────────────────────────────────────────────────────────┤
+│                                                                     │
+│  ⚡ OVERTIME (Strongest Overall Factor)                             │
+│     Attrition Rate:  30.53%  (with OT)  vs.  10.44%  (without OT) │
+│     Risk Multiplier: ████████████████░░░░░  ~3× higher             │
+│                                                                     │
+│  🔴 SALES REPRESENTATIVE (Highest-Risk Role)                        │
+│     Overall Role Attrition:       39.76%                            │
+│     Sales Rep + Overtime combo:   66.67%  ← extreme risk zone      │
+│                                                                     │
+│  🏢 SALES DEPARTMENT (Highest-Risk Department)                      │
+│     Departmental Attrition Rate:  20.63%                            │
+│                                                                     │
+│  📉 COMPOUNDING RISK FACTORS                                        │
+│     Lower compensation  ──►  Higher attrition                      │
+│     Lower job satisfaction  ──►  Higher attrition                  │
+│     Shorter tenure  ──►  Higher early-exit probability              │
+│                                                                     │
+└─────────────────────────────────────────────────────────────────────┘
 ```
 
 ---
 
-## Skills Demonstrated
+## 🎯 Strategic Recommendations
 
-**Analytics**
-
-- Workforce Analytics
-- Exploratory Data Analysis
-- Segmentation Analysis
-- Risk Assessment
-
-**SQL**
-
-- Data Aggregation
-- Grouping & Filtering
-- Conditional Logic
-- KPI Reporting
-
-**Business**
-
-- Executive Reporting
-- Data Storytelling
-- Business Insights
-- Strategic Recommendations
-
----
-
-## AI Usage
-
-Gemini in BigQuery was used to support SQL development and exploratory analysis. All queries, findings, interpretations, and documentation were independently reviewed and validated before publication.
+<table>
+<tr>
+<td width="36"><b>①</b></td>
+<td><b>Reduce Excessive Overtime</b> — Address the single highest-impact attrition driver. Audit workload distribution in Sales and enforce sustainable hours policies.</td>
+</tr>
+<tr>
+<td><b>②</b></td>
+<td><b>Prioritise High-Risk Job Roles</b> — Deploy targeted retention programmes for Sales Representatives, who face nearly 40% attrition — and 67% when combining overtime.</td>
+</tr>
+<tr>
+<td><b>③</b></td>
+<td><b>Improve Employee Experience</b> — Invest in satisfaction drivers: managerial quality, career growth clarity, and recognition frameworks, particularly in the Sales department.</td>
+</tr>
+<tr>
+<td><b>④</b></td>
+<td><b>Review Compensation Competitiveness</b> — Benchmark pay bands for high-attrition roles against market rates; address gaps at the lower compensation tiers first.</td>
+</tr>
+<tr>
+<td><b>⑤</b></td>
+<td><b>Strengthen Early-Tenure Retention</b> — Introduce structured onboarding, 30/60/90-day check-ins, and mentoring programmes to reduce short-tenure exits.</td>
+</tr>
+</table>
 
 ---
 
-## Disclaimer
+## 🛠️ Tech Stack
 
-This project uses a publicly available dataset for educational and portfolio purposes. It demonstrates SQL, workforce analytics, business intelligence, and executive reporting skills.
+```
+┌──────────────────────────────────────────────────────────────────┐
+│              EMPLOYEE ATTRITION RISK ANALYSIS STACK              │
+├──────────────────────┬───────────────────────────────────────────┤
+│  Data Warehouse      │  Google BigQuery                          │
+│  Query Language      │  SQL                                      │
+│  AI Assistance       │  Gemini in BigQuery                       │
+│  Documentation       │  GitHub Markdown                          │
+│  Version Control     │  Git                                      │
+└──────────────────────┴───────────────────────────────────────────┘
+```
 
 ---
 
-## Conclusion
+## 🧠 Skills Demonstrated
 
-This project demonstrates how workforce analytics can identify employee attrition risks and translate data into practical business recommendations. By combining SQL analysis with executive reporting, it highlights how data can support informed workforce planning and retention strategies.
+<table>
+<thead>
+<tr>
+<th>📊 Analytics</th>
+<th>🗄️ SQL</th>
+<th>💼 Business</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Workforce Analytics</td>
+<td>Data Aggregation</td>
+<td>Executive Reporting</td>
+</tr>
+<tr>
+<td>Exploratory Data Analysis</td>
+<td>Grouping & Filtering</td>
+<td>Data Storytelling</td>
+</tr>
+<tr>
+<td>Segmentation Analysis</td>
+<td>Conditional Logic</td>
+<td>Business Insights</td>
+</tr>
+<tr>
+<td>Risk Assessment</td>
+<td>KPI Reporting</td>
+<td>Strategic Recommendations</td>
+</tr>
+</tbody>
+</table>
+
+---
+
+## 📁 Repository Structure
+
+```
+employee-attrition-risk-analysis/
+│
+├── 📄  README.md
+├── 📑  deck-attrition-executive.pdf       ← Start here
+│
+└── 📂  reports/
+    ├── 📝  executive_summary.md
+    ├── 📂  sql/                            ← All BigQuery queries
+    ├── 📂  evidence/                       ← Supporting screenshots & data
+    └── 📂  docs/                           ← Extended documentation
+```
+
+---
+
+## 🤖 AI Usage Disclosure
+
+Gemini in BigQuery was used to support SQL development and exploratory analysis. All queries, findings, interpretations, and documentation were **independently reviewed and validated** by the author before publication. No AI-generated output was published without human verification.
+
+---
+
+## ⚠️ Disclaimer
+
+This project uses a publicly available dataset for educational and portfolio demonstration purposes. It showcases applied SQL, workforce analytics, business intelligence, and executive communication skills.
+
+---
+
+<div align="center">
+
+**Data doesn't just describe attrition — it predicts and prevents it.**
+
+<br/>
+
+*Employee Attrition Risk Analysis — Turning workforce signals into retention strategy.*
+
+<br/>
+
+`© 2026 Imtiaz Hussain Laskar. All Rights Reserved.`
+
+</div>
